@@ -34,6 +34,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 4
+text = "eranot@eranot.com.br"
 
 [node name="PasswordLabel" type="Label" parent="Container"]
 layout_mode = 2
@@ -44,6 +45,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 4
+text = "12345678"
 
 [node name="HSeparator" type="HSeparator" parent="Container"]
 layout_mode = 2

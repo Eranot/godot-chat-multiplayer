@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://biioaledh8ihs"]
+
+[node name="Message" type="RichTextLabel"]
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[b]Renato:[/b] Teste de mensagem"
+fit_content = true
+scroll_active = false
