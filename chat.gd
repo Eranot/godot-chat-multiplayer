@@ -6,6 +6,8 @@ var channel
 func _ready():
 	await connect_socket(AccountController.client, AccountController.session)
 	channel = await join_chat("global")
+	for user in channel.presences:
+		add_user(user)
 
 func connect_socket(client: NakamaClient, session: NakamaSession):
 	socket = Nakama.create_socket_from(client)
@@ -14,6 +16,7 @@ func connect_socket(client: NakamaClient, session: NakamaSession):
 	socket.received_error.connect(self._on_socket_error)
 	await socket.connect_async(session)	
 	socket.received_channel_message.connect(self._on_receive_chat_message)
+	socket.received_channel_presence.connect(self._on_channel_presence)
 
 func join_chat(chat_id: String) -> NakamaRTAPI.Channel:
 	return await socket.join_chat_async("global", 1, true, false)
@@ -28,6 +31,22 @@ func _on_receive_chat_message(data):
 	%MessagesContainer.add_child(message)
 	await get_tree().create_timer(0.1).timeout
 	%ScrollContainer.scroll_vertical = %ScrollContainer.get_v_scroll_bar().max_value
+
+func _on_channel_presence(data):
+	for user in data.joins:
+		add_user(user)
+	
+	for user in data.leaves:
+		remove_user(user)
+
+func add_user(user):
+	var user_label = preload("res://user_label.tscn").instantiate()
+	user_label.set_user(user)
+	%UsersContainer.add_child(user_label)
+
+func remove_user(user):
+	var user_label = %UsersContainer.get_node(user.user_id)
+	%UsersContainer.remove_child(user_label)
 
 func _on_socket_connected():
 	pass
