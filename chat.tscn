@@ -86,7 +86,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="MarginContainerUsers" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(136, 0)
 layout_mode = 2
 size_flags_vertical = 3
 
