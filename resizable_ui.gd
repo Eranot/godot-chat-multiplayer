@@ -32,20 +32,17 @@ func _input(event: InputEvent):
 		var corner = _is_mouse_near_corner()
 		
 		if(corner == CORNER.TOP_LEFT or corner == CORNER.BOTTOM_RIGHT):
-			Input.set_default_cursor_shape(Input.CURSOR_FDIAGSIZE)
-			parent.mouse_default_cursor_shape = CursorShape.CURSOR_FDIAGSIZE
+			DisplayServer.cursor_set_shape(DisplayServer.CURSOR_FDIAGSIZE)
+			get_viewport().set_input_as_handled()
 		elif(corner == CORNER.BOTTOM_LEFT or corner == CORNER.TOP_RIGHT):
-			Input.set_default_cursor_shape(Input.CURSOR_BDIAGSIZE)
-			parent.mouse_default_cursor_shape = CursorShape.CURSOR_BDIAGSIZE
+			DisplayServer.cursor_set_shape(DisplayServer.CURSOR_BDIAGSIZE)
+			get_viewport().set_input_as_handled()
 		elif(corner == CORNER.TOP or corner == CORNER.BOTTOM):
-			Input.set_default_cursor_shape(Input.CURSOR_VSIZE)
-			parent.mouse_default_cursor_shape = CursorShape.CURSOR_VSIZE
+			DisplayServer.cursor_set_shape(DisplayServer.CURSOR_VSIZE)
+			get_viewport().set_input_as_handled()
 		elif(corner == CORNER.LEFT or corner == CORNER.RIGHT):
-			Input.set_default_cursor_shape(Input.CURSOR_HSIZE)
-			parent.mouse_default_cursor_shape = CursorShape.CURSOR_HSIZE
-		else:
-			Input.set_default_cursor_shape(Input.CURSOR_ARROW)
-			parent.mouse_default_cursor_shape = CursorShape.CURSOR_ARROW
+			DisplayServer.cursor_set_shape(DisplayServer.CURSOR_HSIZE)
+			get_viewport().set_input_as_handled()
 		
 		if(initial_resize_position):
 			var new_size_and_position = _get_new_size_and_position()

@@ -16,7 +16,7 @@ func _on_login_button_pressed():
 		var password = %PasswordTextEdit.text
 		var success = await AccountController.login(email, password)
 		if(success):
-			get_tree().change_scene_to_file("res://chat.tscn")
+			get_tree().change_scene_to_file("res://game.tscn")
 	else:
 		# show some error
 		pass

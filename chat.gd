@@ -8,6 +8,7 @@ func _ready():
 	channel = await join_chat("global")
 	for user in channel.presences:
 		add_user(user)
+	%LoadingPanel.set_is_loading(false)
 
 func connect_socket(client: NakamaClient, session: NakamaSession):
 	socket = Nakama.create_socket_from(client)
@@ -27,7 +28,7 @@ func _on_receive_chat_message(data):
 	var username = data.username
 	
 	var message = preload("res://message.tscn").instantiate()
-	message.text = "[b]" + username + "[/b]" + ": " + message_text
+	message.text = "[b][color=#96d8ff]" + username + ":[/color][/b] " + message_text
 	%MessagesContainer.add_child(message)
 	await get_tree().create_timer(0.1).timeout
 	%ScrollContainer.scroll_vertical = %ScrollContainer.get_v_scroll_bar().max_value
@@ -71,3 +72,6 @@ func _input(event):
 func _is_pos_in(checkpos: Vector2):
 	var gr = self.get_global_rect()
 	return checkpos.x>=gr.position.x and checkpos.y>=gr.position.y and checkpos.x<gr.end.x and checkpos.y<gr.end.y	
+
+func _on_users_button_toggled(button_pressed):
+	%Usuarios.visible = button_pressed
