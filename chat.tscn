@@ -121,10 +121,10 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 script = ExtResource("8_inrj2")
+mode = 1
 min_size = Vector2(160, 0)
 max_size = Vector2(260, 0)
-activated_corners = 4
-mode = 1
+active_handles = 4
 
 [node name="UsuariosVBox" type="VBoxContainer" parent="ChatHBox/UsuariosContainer"]
 layout_mode = 1
