@@ -74,4 +74,4 @@ func _is_pos_in(checkpos: Vector2):
 	return checkpos.x>=gr.position.x and checkpos.y>=gr.position.y and checkpos.x<gr.end.x and checkpos.y<gr.end.y	
 
 func _on_users_button_toggled(button_pressed):
-	%Usuarios.visible = button_pressed
+	%UsuariosContainer.visible = button_pressed

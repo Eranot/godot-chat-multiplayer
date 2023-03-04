@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://cnr58ylpoc7ci"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://cnr58ylpoc7ci"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mdc7u"]
 content_margin_left = 4.0
@@ -53,6 +53,13 @@ corner_radius_top_right = 12
 [sub_resource type="FontVariation" id="FontVariation_x5j8d"]
 variation_embolden = 0.5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2524i"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 0.8)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0busf"]
 bg_color = Color(0, 0, 0, 0.6)
 corner_radius_top_left = 4
@@ -98,6 +105,7 @@ MessagesBackground/styles/panel = SubResource("StyleBoxFlat_00ca0")
 Panel/styles/panel = SubResource("StyleBoxFlat_nfr4b")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_fefa2")
 RichTextLabel/fonts/bold_font = SubResource("FontVariation_x5j8d")
+TopBarPanel/styles/panel = SubResource("StyleBoxFlat_2524i")
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_0busf")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_umcfl")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_6nf5d")

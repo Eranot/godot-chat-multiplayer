@@ -3,19 +3,18 @@
 [ext_resource type="Script" path="res://chat.gd" id="1_77vse"]
 [ext_resource type="Theme" uid="uid://cnr58ylpoc7ci" path="res://theme/chat_theme.tres" id="1_uw4bn"]
 [ext_resource type="Script" path="res://draggable_ui.gd" id="3_gd8i8"]
-[ext_resource type="Script" path="res://resizable_ui.gd" id="4_h6w1c"]
 [ext_resource type="Texture2D" uid="uid://ebl8rau1gjgt" path="res://assets/img/user_icon_normal.png" id="5_rejrt"]
 [ext_resource type="Texture2D" uid="uid://drh7vpppbl1yf" path="res://assets/img/user_icon_pressed.png" id="6_3341n"]
 [ext_resource type="PackedScene" uid="uid://8r4elflx4op5" path="res://loading_panel.tscn" id="7_5tolr"]
+[ext_resource type="Script" path="res://addons/online.estudiorecursivo.resizable/resizable.gd" id="8_inrj2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7gikw"]
 
 [sub_resource type="Theme" id="Theme_h2ncb"]
 CheckButton/styles/pressed = SubResource("StyleBoxEmpty_7gikw")
 
-[node name="Chat" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="Chat" type="PanelContainer"]
+clip_contents = true
 offset_left = 90.0
 offset_top = 149.0
 offset_right = 644.0
@@ -23,119 +22,84 @@ offset_bottom = 452.0
 theme = ExtResource("1_uw4bn")
 script = ExtResource("1_77vse")
 
-[node name="ResizableUI" type="Control" parent="." node_paths=PackedStringArray("parent")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-script = ExtResource("4_h6w1c")
-parent = NodePath("..")
-min_size = Vector2(250, 250)
+[node name="ResizableChat" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("8_inrj2")
+min_size = Vector2(260, 250)
 max_size = Vector2(1100, 600)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ChatHBox" type="HBoxContainer" parent="."]
+clip_contents = true
+layout_mode = 2
 
-[node name="Chat" type="VBoxContainer" parent="HBoxContainer"]
+[node name="MessagesVBox" type="VBoxContainer" parent="ChatHBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="TopBar" type="Panel" parent="HBoxContainer/Chat"]
-custom_minimum_size = Vector2(0, 35)
+[node name="TopBar" type="PanelContainer" parent="ChatHBox/MessagesVBox"]
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 mouse_filter = 1
+theme_type_variation = &"TopBarPanel"
 
-[node name="Title" type="Label" parent="HBoxContainer/Chat/TopBar"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -43.5
-offset_top = -13.0
-offset_right = 43.5
-offset_bottom = 13.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Chat"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Chat/TopBar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="ChatHBox/MessagesVBox/TopBar"]
+layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 4
 
-[node name="DraggableUI" type="Control" parent="HBoxContainer/Chat/TopBar/MarginContainer" node_paths=PackedStringArray("parent")]
+[node name="DraggableUI" type="Control" parent="ChatHBox/MessagesVBox/TopBar/MarginContainer" node_paths=PackedStringArray("parent")]
 layout_mode = 2
 script = ExtResource("3_gd8i8")
 parent = NodePath("../../../../..")
 
-[node name="UsersButton" type="TextureButton" parent="HBoxContainer/Chat/TopBar"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ChatHBox/MessagesVBox/TopBar/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="ChatTitle" type="Label" parent="ChatHBox/MessagesVBox/TopBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Chat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UsersButton" type="TextureButton" parent="ChatHBox/MessagesVBox/TopBar/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(26, 26)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -13.0
-offset_right = -6.0
-offset_bottom = 13.0
-grow_horizontal = 0
-grow_vertical = 2
+layout_mode = 2
+size_flags_horizontal = 8
 tooltip_text = "Mostrar usuários"
 theme = SubResource("Theme_h2ncb")
 toggle_mode = true
 texture_normal = ExtResource("5_rejrt")
 texture_pressed = ExtResource("6_3341n")
 
-[node name="Panel" type="Panel" parent="HBoxContainer/Chat"]
+[node name="MessagesPanel" type="PanelContainer" parent="ChatHBox/MessagesVBox"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 1
 theme_type_variation = &"MessagesBackground"
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Chat/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="ChatHBox/MessagesVBox/MessagesPanel"]
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Chat/Panel/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ChatHBox/MessagesVBox/MessagesPanel/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="MessagesContainer" type="VBoxContainer" parent="HBoxContainer/Chat/Panel/MarginContainer/ScrollContainer"]
+[node name="MessagesContainer" type="VBoxContainer" parent="ChatHBox/MessagesVBox/MessagesPanel/MarginContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ChatBox" type="LineEdit" parent="HBoxContainer/Chat"]
+[node name="ChatBox" type="LineEdit" parent="ChatHBox/MessagesVBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
@@ -144,71 +108,71 @@ mouse_filter = 1
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="Usuarios" type="VBoxContainer" parent="HBoxContainer"]
+[node name="UsuariosContainer" type="Control" parent="ChatHBox"]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="TopBar" type="Panel" parent="HBoxContainer/Usuarios"]
-custom_minimum_size = Vector2(0, 35)
-layout_mode = 2
 mouse_filter = 1
 
-[node name="Title" type="Label" parent="HBoxContainer/Usuarios/TopBar"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -43.5
-offset_top = -13.0
-offset_right = 43.5
-offset_bottom = 13.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Usuários"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="ResizableUsuarios" type="Control" parent="ChatHBox/UsuariosContainer"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("8_inrj2")
+min_size = Vector2(160, 0)
+max_size = Vector2(260, 0)
+activated_corners = 4
+mode = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Usuarios/TopBar"]
+[node name="UsuariosVBox" type="VBoxContainer" parent="ChatHBox/UsuariosContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TopBar" type="PanelContainer" parent="ChatHBox/UsuariosContainer/UsuariosVBox"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+mouse_filter = 1
+theme_type_variation = &"TopBarPanel"
+
+[node name="UsuariosTitle" type="Label" parent="ChatHBox/UsuariosContainer/UsuariosVBox/TopBar"]
+layout_mode = 2
+text = "Usuários"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ChatHBox/UsuariosContainer/UsuariosVBox/TopBar"]
+layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="DraggableUI" type="Control" parent="HBoxContainer/Usuarios/TopBar/MarginContainer" node_paths=PackedStringArray("parent")]
+[node name="DraggableUI" type="Control" parent="ChatHBox/UsuariosContainer/UsuariosVBox/TopBar/MarginContainer" node_paths=PackedStringArray("parent")]
 layout_mode = 2
 script = ExtResource("3_gd8i8")
-parent = NodePath("../../../../..")
+parent = NodePath("../../../../../..")
 
-[node name="Panel" type="Panel" parent="HBoxContainer/Usuarios"]
+[node name="Panel" type="PanelContainer" parent="ChatHBox/UsuariosContainer/UsuariosVBox"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"MessagesBackground"
 
-[node name="MarginContainerUsers" type="MarginContainer" parent="HBoxContainer/Usuarios/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainerUsers" type="MarginContainer" parent="ChatHBox/UsuariosContainer/UsuariosVBox/Panel"]
+layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Usuarios/Panel/MarginContainerUsers"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ChatHBox/UsuariosContainer/UsuariosVBox/Panel/MarginContainerUsers"]
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="UsersContainer" type="VBoxContainer" parent="HBoxContainer/Usuarios/Panel/MarginContainerUsers/ScrollContainer"]
+[node name="UsersContainer" type="VBoxContainer" parent="ChatHBox/UsuariosContainer/UsuariosVBox/Panel/MarginContainerUsers/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -216,9 +180,9 @@ size_flags_horizontal = 3
 [node name="LoadingPanel" parent="." instance=ExtResource("7_5tolr")]
 unique_name_in_owner = true
 visible = false
-layout_mode = 1
+layout_mode = 2
 
-[connection signal="gui_input" from="HBoxContainer/Chat/TopBar/MarginContainer/DraggableUI" to="HBoxContainer/Chat/TopBar/MarginContainer/DraggableUI" method="_on_gui_input"]
-[connection signal="toggled" from="HBoxContainer/Chat/TopBar/UsersButton" to="." method="_on_users_button_toggled"]
-[connection signal="text_submitted" from="HBoxContainer/Chat/ChatBox" to="." method="_on_chat_box_text_submitted"]
-[connection signal="gui_input" from="HBoxContainer/Usuarios/TopBar/MarginContainer/DraggableUI" to="HBoxContainer/Usuarios/TopBar/MarginContainer/DraggableUI" method="_on_gui_input"]
+[connection signal="gui_input" from="ChatHBox/MessagesVBox/TopBar/MarginContainer/DraggableUI" to="ChatHBox/MessagesVBox/TopBar/MarginContainer/DraggableUI" method="_on_gui_input"]
+[connection signal="toggled" from="ChatHBox/MessagesVBox/TopBar/MarginContainer/HBoxContainer/UsersButton" to="." method="_on_users_button_toggled"]
+[connection signal="text_submitted" from="ChatHBox/MessagesVBox/ChatBox" to="." method="_on_chat_box_text_submitted"]
+[connection signal="gui_input" from="ChatHBox/UsuariosContainer/UsuariosVBox/TopBar/MarginContainer/DraggableUI" to="ChatHBox/UsuariosContainer/UsuariosVBox/TopBar/MarginContainer/DraggableUI" method="_on_gui_input"]
