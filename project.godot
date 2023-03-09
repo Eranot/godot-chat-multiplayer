@@ -22,4 +22,4 @@ AccountController="*res://account_controller.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/online.estudiorecursivo.resizable/plugin.cfg")
+enabled=PackedStringArray("res://addons/eranot.resizable/plugin.cfg")

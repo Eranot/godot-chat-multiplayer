@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://chat.gd" id="1_77vse"]
 [ext_resource type="Theme" uid="uid://cnr58ylpoc7ci" path="res://theme/chat_theme.tres" id="1_uw4bn"]
 [ext_resource type="Script" path="res://draggable_ui.gd" id="3_gd8i8"]
+[ext_resource type="Script" path="res://addons/eranot.resizable/resizable.gd" id="3_lo7k2"]
 [ext_resource type="Texture2D" uid="uid://ebl8rau1gjgt" path="res://assets/img/user_icon_normal.png" id="5_rejrt"]
 [ext_resource type="Texture2D" uid="uid://drh7vpppbl1yf" path="res://assets/img/user_icon_pressed.png" id="6_3341n"]
 [ext_resource type="PackedScene" uid="uid://8r4elflx4op5" path="res://loading_panel.tscn" id="7_5tolr"]
-[ext_resource type="Script" path="res://addons/online.estudiorecursivo.resizable/resizable.gd" id="8_inrj2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7gikw"]
 
@@ -25,7 +25,7 @@ script = ExtResource("1_77vse")
 [node name="ResizableChat" type="Control" parent="."]
 layout_mode = 2
 mouse_filter = 2
-script = ExtResource("8_inrj2")
+script = ExtResource("3_lo7k2")
 min_size = Vector2(260, 250)
 max_size = Vector2(1100, 600)
 
@@ -115,12 +115,12 @@ custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 mouse_filter = 1
 
-[node name="ResizableUsuarios" type="Control" parent="ChatHBox/UsuariosContainer"]
+[node name="Resizable" type="Control" parent="ChatHBox/UsuariosContainer"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
-script = ExtResource("8_inrj2")
+script = ExtResource("3_lo7k2")
 mode = 1
 min_size = Vector2(160, 0)
 max_size = Vector2(260, 0)
