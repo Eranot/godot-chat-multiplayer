@@ -1,25 +1,40 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://cnr58ylpoc7ci"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://cnr58ylpoc7ci"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mdc7u"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3b8ma"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.75)
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+bg_color = Color(0.345098, 0.615686, 0.768627, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4vmt"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.588235, 0.847059, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjs44"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.278431, 0.545098, 0.701961, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_au2nh"]
 content_margin_left = 10.0
@@ -44,11 +59,6 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(0, 0, 0, 0.8)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fefa2"]
-bg_color = Color(0, 0, 0, 0.156863)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
 
 [sub_resource type="FontVariation" id="FontVariation_x5j8d"]
 variation_embolden = 0.5
@@ -94,7 +104,15 @@ corner_radius_bottom_left = 10
 corner_detail = 6
 
 [resource]
-Button/styles/focus = SubResource("StyleBoxFlat_mdc7u")
+Button/colors/font_color = Color(0.12549, 0.12549, 0.12549, 1)
+Button/colors/font_hover_color = Color(0.882353, 0.882353, 0.882353, 1)
+Button/colors/font_hover_pressed_color = Color(0.882353, 0.882353, 0.882353, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_3b8ma")
+Button/styles/normal = SubResource("StyleBoxFlat_b4vmt")
+Button/styles/pressed = SubResource("StyleBoxFlat_kjs44")
+FormLabel/colors/font_color = Color(0.588235, 0.847059, 1, 1)
+FormLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+FormLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
 LineEdit/styles/focus = SubResource("StyleBoxFlat_au2nh")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_y8bb7")
 MarginContainer/constants/margin_bottom = 8
@@ -103,7 +121,6 @@ MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 8
 MessagesBackground/styles/panel = SubResource("StyleBoxFlat_00ca0")
 Panel/styles/panel = SubResource("StyleBoxFlat_nfr4b")
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_fefa2")
 RichTextLabel/fonts/bold_font = SubResource("FontVariation_x5j8d")
 TopBarPanel/styles/panel = SubResource("StyleBoxFlat_2524i")
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_0busf")

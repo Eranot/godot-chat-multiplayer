@@ -1,4 +1,5 @@
 extends Panel
+class_name LoadingComponent
 
 @export var is_loading: bool = true
 
