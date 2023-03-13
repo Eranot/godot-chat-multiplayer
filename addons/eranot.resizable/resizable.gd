@@ -37,6 +37,10 @@ var min_size: Vector2 = Vector2(0, 0)
 @export 
 var max_size: Vector2 = Vector2(0, 0)
 
+## Keeps the control from being resized beyond the viewport.
+@export
+var clamp_to_viewport: bool = false
+
 ## Whether each of the handles are active or not
 @export_flags("TOP", "BOTTOM", "LEFT", "RIGHT", "TOP_LEFT", "TOP_RIGHT", "BOTTOM_LEFT", "BOTTOM_RIGHT") 
 var active_handles = 255
@@ -65,7 +69,7 @@ func _input(event: InputEvent):
 
 
 func _on_mouse_move(event):
-	var handle = get_hovered_handle()
+	var handle = handle_being_resized if handle_being_resized != null else get_hovered_handle()
 		
 	if handle != null:
 		var is_handle_active = active_handles & handle
@@ -120,32 +124,35 @@ func _get_new_size(size: Vector2):
 		return new_size
 	
 	if handle_being_resized == HANDLE.BOTTOM_RIGHT:
-		new_size = initial_parent_size + (get_global_mouse_position() - initial_resize_position)
+		new_size = initial_parent_size + (_get_mouse_position() - initial_resize_position)
 	elif handle_being_resized == HANDLE.TOP_LEFT:
-		new_size = initial_parent_size - (get_global_mouse_position() - initial_resize_position)
+		new_size = initial_parent_size - (_get_mouse_position() - initial_resize_position)
 	elif handle_being_resized == HANDLE.TOP_RIGHT:
-		var x = initial_parent_size.x + (get_global_mouse_position().x - initial_resize_position.x)
-		var y = initial_parent_size.y - (get_global_mouse_position().y - initial_resize_position.y)
+		var x = initial_parent_size.x + (_get_mouse_position().x - initial_resize_position.x)
+		var y = initial_parent_size.y - (_get_mouse_position().y - initial_resize_position.y)
 		new_size = Vector2(x, y)
 	elif handle_being_resized == HANDLE.BOTTOM_LEFT:
-		var x = initial_parent_size.x - (get_global_mouse_position().x - initial_resize_position.x)
-		var y = initial_parent_size.y + (get_global_mouse_position().y - initial_resize_position.y)
+		var x = initial_parent_size.x - (_get_mouse_position().x - initial_resize_position.x)
+		var y = initial_parent_size.y + (_get_mouse_position().y - initial_resize_position.y)
 		new_size = Vector2(x, y)
 	elif handle_being_resized == HANDLE.LEFT:
-		var x = initial_parent_size.x - (get_global_mouse_position().x - initial_resize_position.x)
+		var x = initial_parent_size.x - (_get_mouse_position().x - initial_resize_position.x)
 		new_size = Vector2(x, new_size.y)
 	elif handle_being_resized == HANDLE.RIGHT:
-		var x = initial_parent_size.x + (get_global_mouse_position().x - initial_resize_position.x)
+		var x = initial_parent_size.x + (_get_mouse_position().x - initial_resize_position.x)
 		new_size = Vector2(x, new_size.y)
 	elif handle_being_resized == HANDLE.BOTTOM:
-		var y = initial_parent_size.y + (get_global_mouse_position().y - initial_resize_position.y)
+		var y = initial_parent_size.y + (_get_mouse_position().y - initial_resize_position.y)
 		new_size = Vector2(new_size.x, y)
 	elif handle_being_resized == HANDLE.TOP:
-		var y = initial_parent_size.y - (get_global_mouse_position().y - initial_resize_position.y)
+		var y = initial_parent_size.y - (_get_mouse_position().y - initial_resize_position.y)
 		new_size = Vector2(new_size.x, y)
 	
 	return _respect_min_max_size(new_size)
 
+func _get_mouse_position() -> Vector2:
+	return get_global_mouse_position().clamp(Vector2.ZERO,\
+		get_viewport_rect().size) if clamp_to_viewport else get_global_mouse_position()
 
 # Returns the new position of the parent node, based on the new size of the parent node and in which handle is being resized
 func _get_new_position(position: Vector2, size: Vector2):
@@ -220,4 +227,3 @@ func _respect_min_max_size(new_size):
 		new_size.y = max_size.y
 	
 	return new_size
-	
