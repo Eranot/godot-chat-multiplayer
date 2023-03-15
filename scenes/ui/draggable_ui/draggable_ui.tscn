@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnpq3oc6h7evd"]
+
+[ext_resource type="Script" path="res://scenes/ui/draggable_ui/draggable_ui.gd" id="1_0lwhr"]
+
+[node name="DraggableUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0lwhr")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

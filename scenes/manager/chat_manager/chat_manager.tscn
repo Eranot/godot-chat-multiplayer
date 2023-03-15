@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dya50cf70mkpa"]
+
+[ext_resource type="Script" path="res://scenes/manager/chat_manager/chat_manager.gd" id="1_5d24h"]
+
+[node name="ChatManager" type="Node"]
+script = ExtResource("1_5d24h")

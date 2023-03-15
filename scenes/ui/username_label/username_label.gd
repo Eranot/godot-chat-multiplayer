@@ -1,4 +1,5 @@
 extends HBoxContainer
+class_name UsernameLabel
 
 func set_user(user):
 	name = user.user_id

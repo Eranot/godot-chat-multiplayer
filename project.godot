@@ -11,14 +11,15 @@ config_version=5
 [application]
 
 config/name="ChatMultiplayer"
-run/main_scene="res://menu.tscn"
+run/main_scene="res://scenes/screen/menu/menu.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
-AccountController="*res://account_controller.gd"
+AccountController="*res://scenes/global/account_controller/account_controller.tscn"
+ServerManager="*res://scenes/global/server_manager/server_manager.tscn"
 
 [editor_plugins]
 

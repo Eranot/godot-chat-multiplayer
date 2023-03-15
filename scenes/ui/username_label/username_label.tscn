@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://jjf46dgb5rw8"]
+[gd_scene load_steps=3 format=3 uid="uid://sawbxliccdne"]
 
-[ext_resource type="Texture2D" uid="uid://cgk2kamp3b5pf" path="res://assets/img/online_icon.png" id="1_0usud"]
-[ext_resource type="Script" path="res://user_label.gd" id="1_lp1x1"]
+[ext_resource type="Script" path="res://scenes/ui/username_label/username_label.gd" id="1_sxojg"]
+[ext_resource type="Texture2D" uid="uid://bxbddbl46wmhk" path="res://assets/img/online_icon.png" id="2_njhx1"]
 
-[node name="UserLabel" type="HBoxContainer"]
+[node name="UsernameLabel" type="HBoxContainer"]
 clip_contents = true
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,14 +15,14 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_constants/separation = 8
-script = ExtResource("1_lp1x1")
+script = ExtResource("1_sxojg")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("1_0usud")
+texture = ExtResource("2_njhx1")
 expand_mode = 2
 
 [node name="UsernameLabel" type="Label" parent="."]

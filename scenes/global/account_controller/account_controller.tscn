@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ynx32825io4i"]
+
+[ext_resource type="Script" path="res://scenes/global/account_controller/account_controller.gd" id="1_mfldj"]
+
+[node name="AccountController" type="Node"]
+script = ExtResource("1_mfldj")

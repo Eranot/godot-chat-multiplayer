@@ -1,6 +1,8 @@
-[gd_scene format=3 uid="uid://biioaledh8ihs"]
+[gd_scene load_steps=2 format=3 uid="uid://biioaledh8ihs"]
 
-[node name="Message" type="RichTextLabel"]
+[ext_resource type="Script" path="res://scenes/ui/chat/chat_message/chat_message.gd" id="1_f2lwk"]
+
+[node name="ChatMessage" type="RichTextLabel"]
 offset_right = 369.0
 offset_bottom = 23.0
 size_flags_horizontal = 3
@@ -11,3 +13,4 @@ bbcode_enabled = true
 text = "[b][color=#96d8ff]Renato:[/color][/b] Teste de mensagem"
 fit_content = true
 scroll_active = false
+script = ExtResource("1_f2lwk")
