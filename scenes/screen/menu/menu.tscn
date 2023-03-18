@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://xhbk20kbj86h"]
+[gd_scene load_steps=7 format=3 uid="uid://duq3os1vk2xem"]
 
-[ext_resource type="Theme" uid="uid://cnr58ylpoc7ci" path="res://theme/chat_theme.tres" id="1_bnydp"]
+[ext_resource type="Theme" uid="uid://cnr58ylpoc7ci" path="res://resources/theme/chat_theme.tres" id="1_214tq"]
 [ext_resource type="Script" path="res://scenes/screen/menu/menu.gd" id="2_c57qn"]
 [ext_resource type="Texture2D" uid="uid://bittaey1sxw2t" path="res://assets/img/1659875.jpg" id="3_5vhr1"]
 [ext_resource type="PackedScene" uid="uid://drib7q5p8768m" path="res://scenes/level/game/game.tscn" id="3_j8m5q"]
@@ -14,7 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_bnydp")
+theme = ExtResource("1_214tq")
 script = ExtResource("2_c57qn")
 game_scene = ExtResource("3_j8m5q")
 create_account_scene = ExtResource("4_5w52p")
@@ -70,7 +70,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 4
-text = "eranot@eranot.com.br"
+focus_next = NodePath("../../PasswordField/PasswordTextEdit")
+caret_force_displayed = true
 
 [node name="PasswordField" type="VBoxContainer" parent="PanelContainer/MarginContainer/Container"]
 layout_mode = 2
@@ -86,7 +87,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 4
-text = "12345678"
 secret = true
 
 [node name="LoginButton" type="Button" parent="PanelContainer/MarginContainer/Container"]

@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://ewk7tnh6g6gf"]
+[gd_scene load_steps=14 format=3 uid="uid://oy02ydm2ine6"]
 
+[ext_resource type="Theme" uid="uid://cnr58ylpoc7ci" path="res://resources/theme/chat_theme.tres" id="1_8f5mp"]
 [ext_resource type="Script" path="res://scenes/ui/chat/chat.gd" id="1_77vse"]
-[ext_resource type="Theme" uid="uid://cnr58ylpoc7ci" path="res://theme/chat_theme.tres" id="1_uw4bn"]
 [ext_resource type="Script" path="res://addons/eranot.resizable/resizable.gd" id="3_lo7k2"]
 [ext_resource type="PackedScene" uid="uid://biioaledh8ihs" path="res://scenes/ui/chat/chat_message/chat_message.tscn" id="3_y8jpk"]
 [ext_resource type="PackedScene" uid="uid://sawbxliccdne" path="res://scenes/ui/username_label/username_label.tscn" id="4_ndovo"]
@@ -21,7 +21,7 @@ CheckButton/styles/pressed = SubResource("StyleBoxEmpty_7gikw")
 clip_contents = true
 offset_right = 554.0
 offset_bottom = 303.0
-theme = ExtResource("1_uw4bn")
+theme = ExtResource("1_8f5mp")
 script = ExtResource("1_77vse")
 chat_message_scene = ExtResource("3_y8jpk")
 username_label_scene = ExtResource("4_ndovo")

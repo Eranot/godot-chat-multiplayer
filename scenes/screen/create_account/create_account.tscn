@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scenes/screen/create_account/create_account.gd" id="1_4g0r1"]
-[ext_resource type="Theme" uid="uid://cnr58ylpoc7ci" path="res://theme/chat_theme.tres" id="1_6mnay"]
+[ext_resource type="Theme" uid="uid://cnr58ylpoc7ci" path="res://resources/theme/chat_theme.tres" id="1_6mnay"]
 [ext_resource type="Texture2D" uid="uid://bittaey1sxw2t" path="res://assets/img/1659875.jpg" id="2_mqwev"]
-[ext_resource type="PackedScene" uid="uid://dr3vwqm1yqhkk" path="res://scenes/ui/loading_component/loading_component.tscn" id="4_jy8bd"]
+[ext_resource type="PackedScene" path="res://scenes/ui/loading_component/loading_component.tscn" id="4_jy8bd"]
 
 [node name="CreateAccount" type="Control"]
 layout_mode = 3
